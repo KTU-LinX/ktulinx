@@ -1,4 +1,4 @@
-# newktuhelp
+# KTU LinX
 
 A new Flutter application.
 
