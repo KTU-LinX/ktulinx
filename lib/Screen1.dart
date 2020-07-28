@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newktuhelp/Calsgpa.dart';
 import 'package:newktuhelp/Screen2.dart';
-import 'package:newktuhelp/attendance_calculator.dart';
-import 'video_stream.dart';
 
 const activeCardColour = Colors.grey;
 
@@ -52,7 +50,7 @@ class Screen1 extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context){
-                                return AttendanceCalculator();
+                                return Screen2();
                               }
                           )
                       );
@@ -89,7 +87,7 @@ class Screen1 extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context){
-                                return VideoStream();
+                                return Screen2();
                               }
                           )
                       );
