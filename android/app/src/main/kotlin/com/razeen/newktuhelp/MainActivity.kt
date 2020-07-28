@@ -1,4 +1,4 @@
-package com.razeen.ktulinx
+package com.razeen.newktuhelp
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
