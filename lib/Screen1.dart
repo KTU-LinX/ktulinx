@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:newktuhelp/Calsgpa.dart';
 import 'package:newktuhelp/Screen2.dart';
+import 'package:newktuhelp/attendance/attendanceHome.dart';
+import 'package:newktuhelp/contribute/contribute.dart';
+import 'package:newktuhelp/sgpa/gpawelcomescreen.dart';
+import 'package:newktuhelp/studymaterials/main.dart';
+import 'package:newktuhelp/performance/todo_list_screen.dart';
+import 'package:newktuhelp/result/resultanalysis.dart';
 
-const activeCardColour = Colors.grey;
+const activeCardColour = Colors.teal;
 
 
 class Screen1 extends StatelessWidget {
@@ -10,7 +15,7 @@ class Screen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E31),
+        backgroundColor: Colors.teal,
         title: Text('KTU LINX',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),
       ),),
       body: Padding(
@@ -22,27 +27,27 @@ class Screen1 extends StatelessWidget {
                 Expanded(child: GestureDetector(
                   child: ReusableCard(colour: activeCardColour,
                   cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                    Text ('GPA CALCULATOR',style: TextStyle(fontSize: 20.0,),textAlign: TextAlign.center,
+                    Text ('GPA CALCULATOR',style: TextStyle(fontSize: 23.0,color: Colors.white),textAlign: TextAlign.center,
                     ),],), ),
                       onTap: (){
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context){
-                                  return Calsgpa();
+                                  return WelcomeScreen();
                                 }
                             )
                         );
                       }
-
-
                 ),),
                 Expanded(child: GestureDetector(
                   child: ReusableCard(colour: activeCardColour,
                     cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                      Text ('ATTENDANCE CALCULATOR',style: TextStyle(fontSize: 20.0,),textAlign: TextAlign.center,
+                      Text ('ATTENDANCE CALCULATOR',style: TextStyle(fontSize: 23.0,color: Colors.white),textAlign: TextAlign.center,
                     ),],),),
 
                     onTap: (){
@@ -50,7 +55,7 @@ class Screen1 extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context){
-                                return Screen2();
+                                return AttendanceHome();
                               }
                           )
                       );
@@ -61,8 +66,9 @@ class Screen1 extends StatelessWidget {
                 Expanded(child: GestureDetector(
                   child: ReusableCard(colour: activeCardColour,
                     cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                    Text ('NOTES',style: TextStyle(fontSize: 20.0,),textAlign: TextAlign.center,
+                    Text ('STUDY MATERIALS',style: TextStyle(fontSize: 23.0,color: Colors.white),textAlign: TextAlign.center,
                   ),]
                   ),),
                     onTap: (){
@@ -70,7 +76,7 @@ class Screen1 extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context){
-                                return Screen2();
+                                return StudyMaterialHome();
                               }
                           )
                       );
@@ -79,15 +85,16 @@ class Screen1 extends StatelessWidget {
                 Expanded(child: GestureDetector(
                   child: ReusableCard(colour: activeCardColour,
                     cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                      Text ('VIDEO LECTURES',style: TextStyle(fontSize: 20.0,),textAlign: TextAlign.center,
+                      Text ('CONTRIBUTE',style: TextStyle(fontSize: 23.0,color: Colors.white),textAlign: TextAlign.center,
                     ),],),),
                     onTap: (){
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context){
-                                return Screen2();
+                                return Contribute();
                               }
                           )
                       );
@@ -98,15 +105,16 @@ class Screen1 extends StatelessWidget {
                 Expanded(child: GestureDetector(
                   child: ReusableCard(colour: activeCardColour,
                      cardChild: Column(
+                       mainAxisAlignment: MainAxisAlignment.center,
                      children: <Widget>[
-                     Text ('RESULT ANALYSIS',style: TextStyle(fontSize: 20.0,),textAlign: TextAlign.center,
+                     Text ('RESULT ANALYSIS',style: TextStyle(fontSize: 23.0,color: Colors.white),textAlign: TextAlign.center,
                       ),],),),
                     onTap: (){
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context){
-                                return Screen2();
+                                return ResultAnsalysisHomePage();
                               }
                           )
                       );
@@ -114,15 +122,16 @@ class Screen1 extends StatelessWidget {
                 ),),
                 Expanded(child: GestureDetector(
                   child: ReusableCard(colour: activeCardColour,cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                    children: <Widget>[
-                    Text ('PERFORMANCE ANALYSIS',style: TextStyle(fontSize: 20.0,),textAlign: TextAlign.center,
+                    Text ('PERFORMANCE ANALYSIS',style: TextStyle(fontSize: 20.0,color: Colors.white),textAlign: TextAlign.center,
                      ),],),),
                     onTap: (){
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context){
-                                return Screen2();
+                                return TodoListScreen();
                               }
                           )
                       );

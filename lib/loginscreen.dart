@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newktuhelp/main.dart';
+import 'package:newktuhelp/registerationscreen.dart';
 import 'Screen1.dart';
+import 'http.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -7,19 +11,47 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String email;
+  String regno;
   String password;
+bool l1=false;
+  checkUser() async {
+
+    try {
+      var result = await http_post("login",
+          {"regno": regno, "password": password});
+      print(result.data['code']);
+      if (result.data['code'] == 200) {
+        setState(() {
+          wholeid = regno;
+        });
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => new Screen1()),
+                (Route<dynamic> route) => false);
+
+      }
+      else{
+       showDialog(context: context,builder:(BuildContext context){
+         return AlertDialog(
+           title: Text("Incorrect username or password"),
+
+actions: [FlatButton(onPressed: (){Navigator.pop(context);}, child: Text("OK"))],         );
+       });
+      }
+    } catch (err) {}
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0A0E21),
       body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Text("KTU LinX",style:TextStyle(fontWeight: FontWeight.bold,fontSize: 40,fontFamily: 'Raleway'),textAlign: TextAlign.center,),
+              Text("Learning a Tap Away",style:TextStyle(fontWeight:FontWeight.normal,fontSize: 18,fontFamily: 'Raleway-Italic'),textAlign: TextAlign.center,),
               SizedBox(
                 height: 48.0,
               ),
@@ -28,12 +60,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress,
                 onChanged: (value) {
                   //Do something with the user input.
-                  email = value;
+                  regno = value;
                 },
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
 
-                  hintText: 'Enter your mail id',
+                  hintText: 'Enter your regno',
                   contentPadding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -62,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   password=value;
                 },
 
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'Enter your password.',
                   contentPadding:
@@ -94,21 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: MaterialButton(
                     onPressed: ()  {
                       //Implement login functionality.
-                      setState(() {
-                      });
-                      try{
-
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context){
-                                    return Screen1();
-                                  }
-                              )
-                          );
-                      }
-                      catch(e){
-                      }
+                      checkUser();
                     },
                     minWidth: 200.0,
                     height: 42.0,
@@ -118,9 +136,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
+              Divider(height: 1,),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: Material(
+                  color: Colors.lightBlueAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  elevation: 5.0,
+                  child: MaterialButton(
+                    onPressed: ()  {
+                      //Implement login functionality.
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=> RegistrationScreen()));
+                    },
+                    minWidth: 200.0,
+                    height: 42.0,
+                    child: Text(
+                      'Sign Up',
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
+
 
     );
   }

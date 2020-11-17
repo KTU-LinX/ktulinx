@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'welcomescreen.dart';
 import 'Screen1.dart';
 
 void main() => runApp(MyApp());
@@ -7,10 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Color(0xFF0A0E21)
-      ),
-      home: Screen1(),
+      home: WelcomeScreen(),
     );
   }
 }
+
+String wholesem;
+String wholebranch;
+String wholescheme;
+String wholeid;

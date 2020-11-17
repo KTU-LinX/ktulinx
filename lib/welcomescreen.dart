@@ -1,3 +1,6 @@
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+
 import 'loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'registerationscreen.dart';
@@ -32,21 +35,33 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0A0E21),
+      backgroundColor: Colors.teal,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
+            Column(
               children: <Widget>[
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset('images/mimi4.png'),
+                    height: 150.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 18.0,
+                ),
                 TypewriterAnimatedTextKit(
                   text:['KTU LinX'],
+                  speed: Duration(milliseconds:500),
+
                   textStyle: TextStyle(
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
                   ),
                 ),
               ],
